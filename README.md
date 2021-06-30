@@ -9,7 +9,7 @@ Install Python 3.6 https://www.python.org/downloads/release/python-360/
 https://pycryptodome.readthedocs.io/en/latest/src/introduction.html 
 
 ## Hashing Algorithms:
-SHA256 
+SHA256
 SHA512
 
 ## Encryption and Decryption Algorithms:
