@@ -1,6 +1,6 @@
 # Encryption_Decryption
 
-### SetUp
+### SetUp:
 Install Anaconda Python 3.6 version https://conda.io/docs/user-guide/install/index.html
 
 Install Python 3.6 https://www.python.org/downloads/release/python-360/
