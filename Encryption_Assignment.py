@@ -27,7 +27,7 @@ def initial_steps():
     password = input("Please enter password: ")
     # password = password.encode("utf8")
 
-    # Taking hash algorithm from
+    # Taking hash algorithm as user input
     HASH_ALGO = input("Select any one hash algorithms:" '\n1. sha256\n2. sha512\n\n')
     if HASH_ALGO == '1':
         HASH_ALGO = 'sha256'
@@ -90,12 +90,12 @@ def compare_hmac(hmac, hmac_verif):
     return result == 0
 
 
-def select_encrypt_algo(aes_128=None, aes_256=None, triple_des=None):
+def select_encrypt_algo():
     """
     This method will help user to select the encryption algorithm
     :return: ENCRYPTION_ALGO
     """
-    # Taking hash algorithm from
+    # Taking encryption algorithm as user input
     ENCRYPTION_ALGO = input("Select any one encryption algorithms:" '\n1. 3des\n2. aes-128\n3. aes-256\n\n')
     if ENCRYPTION_ALGO == '1':
         ENCRYPTION_ALGO = 'triple_des'
@@ -118,7 +118,7 @@ def triple_des_encrypt_hmac_decrypt(HASH_ALGO, ENCRYPTION_ALGO):
     """
     with open(newPath, "rb") as f:
         file = f.read()
-    # Encrypting file data using 3des
+    # Encrypting data in file using 3des
     triple_des_cipher = DES3.new(Ke[:16].encode("utf-8"), mode=DES3.MODE_CBC, IV=IV[:8])
     triple_des_encrypted = (triple_des_cipher.encrypt(pad(file, DES3.block_size)))
     iv_data = IV[:8] + triple_des_encrypted
@@ -152,7 +152,7 @@ def triple_des_encrypt_hmac_decrypt(HASH_ALGO, ENCRYPTION_ALGO):
             "\n--------HMAC signature has been validated for 3des and now decrypting file using 3des--------")
 
     enc = bytes.fromhex(data['triple_des_encrypted'])
-    # Decrypting file data using 3des
+    # Decrypting data in file using 3des
     triple_des_cipher = DES3.new(data['encryption_key'], mode=DES3.MODE_CBC, IV=bytes.fromhex(data['iv']))
     triple_des_decrypted = unpad(triple_des_cipher.decrypt(enc), DES3.block_size)
     print("3DES decrypt:", triple_des_decrypted.decode('utf-8'))
